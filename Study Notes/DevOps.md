@@ -18,7 +18,7 @@ The practice of automatically building and unit testing an entire application fr
 The practice of deploying every build to a production-like environment and performing automated integration and _acceptance_ testing.
 Check functionality and performance.
 
-**Keywords**: deploying to production-like env, integration and acceptance tests, function, performance.
+**Keywords**: deploying to production-like env, integration and acceptance tests, functionality, performance.
 
 Benefits:
 
