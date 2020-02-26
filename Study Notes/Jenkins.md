@@ -1,6 +1,6 @@
 Windows-based systems should use the bat step for executing batch commands.
 
-```
+```groovy
 pipeline {
     agent any
     stages {
@@ -17,7 +17,7 @@ pipeline {
 
 Timeouts and retries, clean-ups, etc.
 
-```
+```groovy
 pipeline {
     agent any
     stages {
@@ -31,7 +31,7 @@ pipeline {
                 retry(3) {
                     bat 'executethisfile.sh'
                 }
-                timeout(time: 2, unit: 'MINUTES) {
+                timeout(time: 2, unit: 'MINUTES') {
                     
                 }
             }
@@ -127,7 +127,20 @@ pipeline {
 ```
 # Jenkins features:
 
-* Run tasks perioriacally with Schedule.
+* Run tasks perioriacally with Schedule, with cron.
 
+# Connect Jenkins to Github
+
+* In Github, go to user Settings > Developer Settings > Personal access token > Generate new token and select the scopes.
+* In Jenkins, go to Manage Jenkins > Configure System > GitHub Server > Add GitHub Server. Test the connection
+
+
+# Webhooks
+
+* In GitHub, this can be used to push committed changes to Jenkins.
+* In Jenkins, create a new item > Multibranch Pipeline > Save > Branch Source > GitHub > Credentials > Jenkins > Username (your user name) > Password (the token) > Id (unique id) > Add > Credential (new credential created) > Repository HTTPS URL (the GitHub repository you want to inform Jenkins) > Save.
+
+
+> jenkins-webhook : d2993596542a7b1e6e3c7714029caeb40f3f27ad
 
 
