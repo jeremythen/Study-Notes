@@ -105,4 +105,29 @@ You can also specify the parameter while creating an item selection the followin
 
 **This project is parameterized**
 
+## With timeout
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Deploy') {
+            steps {
+                timeout(time: 1, unit: 'MINUTES') {
+                    sh '/var/jenkins_home/scripts/fibonacci.sh 5'
+                }
+                timeout(time: 1, unit: 'MINUTES') {
+                    sh '/var/jenkins_home/scripts/fibonacci.sh 32'
+                }
+            }
+        }
+    }
+}
+
+```
+# Jenkins features:
+
+* Run tasks perioriacally with Schedule.
+
+
 
