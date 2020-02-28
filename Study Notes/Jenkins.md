@@ -144,3 +144,29 @@ pipeline {
 > jenkins-webhook : d2993596542a7b1e6e3c7714029caeb40f3f27ad
 
 
+---
+
+# SSH build agent
+
+## To add slaves worker machines where other instances of Jenkins may be running and make them communicate via SSH:
+
+* Use a provider like Google Cloud or Amazon, create your credential keys and share it with jenkins so jenkins can use those resources to create nodes in Google or Amazon and use them as slave/workers.
+
+# Pending
+
+* Use docker with Jenkins
+* Target specific machines
+* Free style project
+* Why would you use docker with Jenkins
+* Shared libraries
+* Jenkins notification
+* Build state badges for SCM (to show the status of the build on the SCM)
+    * With something like: [![Build Status](http://jenkins.kumulus.co:8080/buildStatus/icon?job=libraries)] in the README file.
+* Code coverage
+
+---
+
+## Jenkins is very extensible. Extend it by using plug-ings
+
+
+
