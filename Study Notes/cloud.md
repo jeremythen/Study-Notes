@@ -7,6 +7,9 @@
 * ROI (return on investment)
 * Elasticity
 * re-platforming
+* CloudOps
+* Zero Downtime (achieved with Redundancy)
+* Self-healing
 
 # Delivery Models
 
@@ -43,4 +46,12 @@
 # Notes
 
 * Data selection is critical
+* Security is the most important aspect of any cloud project
+* Never assume things or security will work
+* Systems should restart automatically
+* Systems should be self-healing
+* Proactively fix issues.
+* Monitoring is really important
+* Be proactive with security
+* Loggin is really important for monitoring, know what is going on, etc.
 * 

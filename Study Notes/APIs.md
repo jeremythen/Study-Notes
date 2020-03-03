@@ -81,5 +81,30 @@
 # Terms
 * WSDL
 
+---
+
+# API Modeling Tips
+
+* Keeps notes
+* Have consistency
+* Documment everything
+* Remember document gaps and questions
+
+# Creating API definition
+
+* Resources are nouns (like items, carts, order, etc)
+* Add the actions (verbs) related to those nouns
+  * List items, view items, view cart, view order, cancel order, etc.
+* Then map the HTTP Methods to those nouns, like GET, DELETE, PUT, POST
+
+# Types of relationships
+
+* Independent
+  * And endpoint exits by itself
+* Dependent
+  * An endpoint requires another one to make sense. Like order needs a cart to proceed.
+* Associate
+  * Can be Independent or Dependent, but needs more information to describe it
+
 
 

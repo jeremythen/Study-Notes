@@ -15,7 +15,6 @@
   - [Dropping one or multiple columns](#dropping-one-or-multiple-columns)
   - [Renaiming columns and tables](#renaiming-columns-and-tables)
   - [See all metadata of tables and columns](#see-all-metadata-of-tables-and-columns)
-  - [Misc](#misc)
   - [Replacing records](#replacing-records)
   - [Create column from other columns (virtual columns)](#create-column-from-other-columns-virtual-columns)
   - [Make column invisible](#make-column-invisible)
@@ -31,6 +30,7 @@
     - [INSERT ALL from literal values:](#insert-all-from-literal-values)
     - [INSERT ALL multiple rows into multiple tables:](#insert-all-multiple-rows-into-multiple-tables)
     - [INSERT ALL based on some conditions:](#insert-all-based-on-some-conditions)
+  - [Misc](#misc)
 - [INDICES](#indices)
   - [Function-based Index](#function-based-index)
 - [Oracle Bitmap Index](#oracle-bitmap-index)
@@ -154,14 +154,6 @@ ALTER TABLE persons RENAME TO thepersons; --- renames the table itseft.
 select * from user_tab_cols; --- saves the metadata of all tables and columns.
 ```
 
-## Misc
-
-DESC stands for DESCRIBE:
-
-DESCRIBE ot.employees; -- is good
-
-You can modify columns to be visible or invisible.
-
 ## Replacing records
 
 ```sql
@@ -277,6 +269,15 @@ INSERT [ ALL | FIRST ] ------------------------- ALL checks all conditions any w
         INTO table_3(column_list ) VALUES (value_list)
 Subquery
 ```
+
+## Misc
+
+DESC stands for DESCRIBE:
+
+DESCRIBE ot.employees; -- is good
+
+You can modify columns to be visible or invisible.
+
 
 # INDICES
 
