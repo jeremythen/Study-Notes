@@ -1,3 +1,29 @@
+- [Jenkins](#jenkins)
+- [Terms](#terms)
+  - [Executing steps](#executing-steps)
+  - [Timeouts and retries, clean-ups, etc.](#timeouts-and-retries-clean-ups-etc)
+- [CI/CD](#cicd)
+- [Parameterizing](#parameterizing)
+  - [With timeout](#with-timeout)
+- [Jenkins features:](#jenkins-features)
+- [Connect Jenkins to Github](#connect-jenkins-to-github)
+- [Webhooks](#webhooks)
+- [SSH build agent](#ssh-build-agent)
+  - [To add slaves worker machines where other instances of Jenkins may be running and make them communicate via SSH:](#to-add-slaves-worker-machines-where-other-instances-of-jenkins-may-be-running-and-make-them-communicate-via-ssh)
+- [Pending](#pending)
+  - [Jenkins is very extensible. Extend it by using plug-ings](#jenkins-is-very-extensible-extend-it-by-using-plug-ings)
+
+# Jenkins
+
+# Terms
+
+* Job or Project
+* Parameterizing job
+* Steps
+* Stages
+
+## Executing steps
+
 Windows-based systems should use the bat step for executing batch commands.
 
 ```groovy
@@ -13,9 +39,7 @@ pipeline {
 }
 ```
 
----
-
-Timeouts and retries, clean-ups, etc.
+## Timeouts and retries, clean-ups, etc.
 
 ```groovy
 pipeline {
@@ -57,8 +81,6 @@ pipeline {
     }
 }
 ```
----
-
 
 # CI/CD
 
@@ -68,14 +90,6 @@ pipeline {
   * Is getting the code to a production-like environment, test it, keep it on a stable state ready to be deployed.
 * Continuous Deployment
   * Is automatically deploying the changes to production, where the user can test it directly.
-
-
-# Terms
-
-* Job or Project
-* Parameterizing job
-* Steps
-* Stages
 
 
 # Parameterizing
