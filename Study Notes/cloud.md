@@ -10,6 +10,11 @@
 * CloudOps
 * Zero Downtime (achieved with Redundancy)
 * Self-healing
+* Serverless
+* FaaS
+* Elastic load balancer
+* Lambda
+* S3
 
 # Delivery Models
 
@@ -54,4 +59,6 @@
 * Monitoring is really important
 * Be proactive with security
 * Loggin is really important for monitoring, know what is going on, etc.
-* 
+
+
+
