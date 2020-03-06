@@ -17,6 +17,15 @@
   - [Desktop and App Streaming](#desktop-and-app-streaming)
   - [Artificial Intelligence](#artificial-intelligence)
   - [Messaging](#messaging)
+- [Practitioner](#practitioner)
+  - [Region](#region)
+  - [Availability Zone (AZ)](#availability-zone-az)
+  - [Edge Location](#edge-location)
+  - [Choosing the right AWS Region](#choosing-the-right-aws-region)
+  - [Type of AWS accounts](#type-of-aws-accounts)
+- [EC2](#ec2)
+  - [Creating A Billing Alarm](#creating-a-billing-alarm)
+    - [Exam notes](#exam-notes)
 
 
 # Check
@@ -151,3 +160,60 @@
 * SNS (notifying you, by email, text, etc)
 * SQS (a queue system)
 * SES
+
+---
+
+# Practitioner
+
+## Region
+
+A Region is a physical location in the world which consists of 2 or more availability zone close to each other.
+
+## Availability Zone (AZ)
+
+An availability zone is basically a data center, where there are a lot of servers.
+
+## Edge Location
+  * Are endpoints for AWS which are used for caching content.
+
+## Choosing the right AWS Region
+
+* Data Sovereinty Laws
+* Latency to end users
+* AWS Services (particular regions may have particular services)
+
+
+## Type of AWS accounts
+
+* Basic
+* Developern (starts a 29 a month)
+* Business (starts at 100 a month)
+* Enterprise (starts at 15,000 a month. Gets a TAM, or Tecnical Account Manager assigned)
+
+# EC2
+
+* On Compute, click EC2
+* On the left menu, click Key Pair
+* Give the key a name and create it.
+* Add it to PuTTY
+
+## Creating A Billing Alarm
+
+* 1) CloudWatch
+* 2) Billing
+* 3) Create Alarm
+* Set up options
+* Next
+* Create SNS (Simple Notification Service)
+* Create new topic
+* Put your email
+* Create Topic
+* Next
+* Add alarm name and description
+* Next
+* Create Alarm
+* Check email and subscribe
+
+### Exam notes
+
+SNS is a way of sending you an email to notify you.
