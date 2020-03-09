@@ -105,6 +105,28 @@
 * Resources should be discoverable through the publication of links
 * Links specifies what the customer can and cannot do.
 
+For this, in responses, include a "link" attribute with the actions that can be done under that resource at that state or app state:
+
+```json
+
+{
+  "name": "Jeremy",
+  "age": 26,
+  "links": [
+    {
+      "href": "/users/5",
+      "rel": "userinfo"
+    },
+    {
+      "href": "/users/5/profile",
+      "rel": "userprofile"
+    }
+  ]
+}
+
+
+```
+
 
 ## Swagger in Spring
 

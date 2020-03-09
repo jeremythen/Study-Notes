@@ -8,8 +8,13 @@ You can use Kubernetes to run applications in Docker on your infrastructure.
 
 ## Terms
 
-* Pods
+* Pods (a group of containers, one single unit of deployment)
 * CNCF
+* etcd
+* kubectl (command line interface)
+* Work Node
+* Kubelet
+* Kube-proxy
 
 ## Features
 
@@ -32,3 +37,23 @@ You can use Kubernetes to run applications in Docker on your infrastructure.
 
 * Don't create your own orchestrator.
 
+# Kubernetes Architecture
+
+## Master Node
+
+* The API Server
+  * The frontend of the kubernetes
+* Scheduler
+  * Watches, creates pods
+* Controller Manager
+  * Node controller, orchestration, replication controller, endpoint controller, service account, etc.
+
+# Controllers
+
+## Types
+
+* ReplicaSet
+  * Makes sure a specified number of replicas for pods are running at all times.
+* Deployment
+  * Declartive updates or ReplicaSets and Pods
+* 
