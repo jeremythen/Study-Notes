@@ -337,6 +337,7 @@ CREATE [OR REPLACE] [PUBLIC] SYNONYM schema.synonym_name
 FOR schema.object;
 ```
 
+
 Example:
 
 ```sql
