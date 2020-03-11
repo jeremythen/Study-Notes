@@ -26,6 +26,7 @@
 - [EC2](#ec2)
   - [Creating A Billing Alarm](#creating-a-billing-alarm)
     - [Exam notes](#exam-notes)
+- [IAM (Identity Access Management)](#iam-identity-access-management)
 
 
 # Check
@@ -217,3 +218,29 @@ An availability zone is basically a data center, where there are a lot of server
 ### Exam notes
 
 SNS is a way of sending you an email to notify you.
+
+User Access types:
+
+* Programmatic access (using the Command Line)
+* AWS Management Console access
+* Amazon SDK access
+
+Policies are specified in JSON.
+
+IAM settings are Global, you don't specify a region, all user creation, etc., are created globally.
+
+The root account is your email, has full administrator access. You should create users for others.
+
+A group is a place to store your users and inherit all permissions specified in that group. Policies consists of JSON.
+
+# IAM (Identity Access Management)
+
+Here you can create users, give privileges, control authentication, etc.
+
+* MFA (Multi Factor Authentication, with Google Authenticator)
+
+
+
+
+
+
