@@ -25,8 +25,24 @@
   - [Type of AWS accounts](#type-of-aws-accounts)
 - [EC2](#ec2)
   - [Creating A Billing Alarm](#creating-a-billing-alarm)
-    - [Exam notes](#exam-notes)
 - [IAM (Identity Access Management)](#iam-identity-access-management)
+- [S3 (Simple Storage Service)](#s3-simple-storage-service)
+  - [S3 data consistency](#s3-data-consistency)
+  - [S3 Guarantees](#s3-guarantees)
+  - [S3 Features](#s3-features)
+  - [S3 Storage Classes](#s3-storage-classes)
+  - [S3 Charges](#s3-charges)
+  - [S3 Lab](#s3-lab)
+- [CloudFront](#cloudfront)
+  - [Create a CloudFront distribution](#create-a-cloudfront-distribution)
+- [EC2 (Amazon Elastic Compute Cloud)](#ec2-amazon-elastic-compute-cloud)
+  - [EC2 Pricing Models](#ec2-pricing-models)
+  - [EC2 Instance Types](#ec2-instance-types)
+    - [EBS](#ebs)
+- [Exam notes](#exam-notes)
+  - [S3](#s3)
+  - [CloudFront](#cloudfront-1)
+  - [EC2](#ec2-1)
 
 
 # Check
@@ -215,7 +231,161 @@ An availability zone is basically a data center, where there are a lot of server
 * Create Alarm
 * Check email and subscribe
 
-### Exam notes
+# IAM (Identity Access Management)
+
+Here you can create users, give privileges, control authentication, etc.
+
+* MFA (Multi Factor Authentication, with Google Authenticator)
+
+# S3 (Simple Storage Service)
+
+S3 is a place to put your files, like images, videos, audios, files that are not going to change.
+Files can be from 0 to 5 TB.
+
+Files are stored in Buckets, with unique names.
+
+Example:
+
+service-region-
+https://s3-eu-west-1.amazonaws.com/bucketname
+
+If the file was successfully uploaded, a 200 HTTP code will be returned.
+
+S3 is Object based, which means just files.
+
+They have:
+
+* Key, value, version Id, metadata, subresources.
+
+The key is the object name and the value is the actual data.
+
+## S3 data consistency
+
+* Read after Write
+  * Able to read the file right away
+* Eventual Consistency for overwrite PUTS and DELETES
+  * Changes (update/delete) take some time to propagate
+
+## S3 Guarantees
+
+* Built for 99.99% availability for the S3 platform.
+* 99.999999999% durability (11 x 9s)
+
+## S3 Features
+
+* Tiered Storage Available
+* Lifecycle Management
+* Versioning
+* Encryption
+* Secure your data using Access Control Lists and Bucket Policies
+* Access Control is on a file level
+* Bucket Policies is on a bucket level
+
+## S3 Storage Classes
+
+* S3 Standard
+* S3 - IA (Infrequently Access)
+* S3 One Zone - IA
+* S3 - Intelligent Tiering
+  * Intelligently moves files to the more cost efective S3 class.
+* S3 Glacier
+  * Cheaper. Retrieval from minutes to hours
+* S3 Glacier Deep Archive
+  * Cheaper. Retrieval from 12 hours.
+
+## S3 Charges
+
+* Storage
+* Requests
+* Storage Management Pricing
+* Data Transfer Pricing
+* Transfer Acceleration
+* Cross Region Replication Pricing
+
+## S3 Lab
+
+When you select S3, the region changes to GLOBAL.
+
+To make any uploads to a Bucket public, put this in the Permissions > Bucket Policy option.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::BUCKET_NAME/*"
+            ]
+        }
+    ]
+}
+
+```
+
+# CloudFront
+
+It's Amazon's CDN (Content Delivery Network)
+
+Can be used to deliver your entire website, including dynamic, static, streaming content. 
+
+## Create a CloudFront distribution
+
+* Under Networking & Content Delivery, select CloudFront > Create Destribution
+
+# EC2 (Amazon Elastic Compute Cloud)
+
+Its just a virtual server in the cloud.
+
+## EC2 Pricing Models
+
+* On Demand
+  * Allows you to pay a fixed rate by hour/second. No commitment.
+* Reserved
+  * Cheaper. With 1 to 3 year contract term.
+* Spot
+  * Allows you to bid price.
+* Dedicated Hosts
+  * Physical EC2 server dedicated for your use.
+  
+## EC2 Instance Types
+
+There are families of EC2 instances specialized in different use cases.
+Like I3 for High Speed Storage, T3 Lowest Cost, General Purpose, etc.
+
+### EBS
+
+Allows you to create storage volumes and attach them to Amazon EC2 instances. Is a 'virtual disk in the cloud'.
+
+* SSD
+  * GP2 (General Purpose SSD)
+  * IO1 (Provisioned IOPS SSD). Fastest.
+* Magnetic (HDD)
+  * ST1 (Throughput Optimized HDD)
+  * SC1 (Cold HDD).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# Exam notes
 
 SNS is a way of sending you an email to notify you.
 
@@ -233,14 +403,37 @@ The root account is your email, has full administrator access. You should create
 
 A group is a place to store your users and inherit all permissions specified in that group. Policies consists of JSON.
 
-# IAM (Identity Access Management)
+## S3
 
-Here you can create users, give privileges, control authentication, etc.
+* Object-based, upload files
+* Files from 0 Bytes to 5TB
+* Unlimited storage
+* Files stored in Buckets
+* S3 is a universal namespace, name must be globally unique
+* 200 HTTP code when files uploads fine
+* Files saved as Key Value pair
+* IAM Policies to Users and Groups
+* You can use to host STATI websites
+* S3 Scales automatically
 
-* MFA (Multi Factor Authentication, with Google Authenticator)
+## CloudFront
+
+* Edge Location is the location where content will be cached, near the client.
+* Origin, the original service where the file was uploaded.
+* Distribution, name of CDN which consists of a collection of Edge Locations.
+* Web Distribution and RTMP (used for media streaming)
+* Edge Locations are not READ only.
+* Objects are cached for the time to live (TTL)
+* You can clear cached objects (will get charged)
 
 
+## EC2
+
+* Linux - SSH (port 22)
+* Microsoft = Remote Desktop Protocol (port 3389)
+* HTTPS (port 443)
+* HTTP (port 80)
+* Design for failure, have one EC2 instance in each availability zone
 
 
-
-
+---
