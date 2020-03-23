@@ -1,3 +1,5 @@
+- [Info](#info)
+  - [Buckets](#buckets)
 - [Check](#check)
 - [Terms](#terms)
 - [Notes](#notes)
@@ -39,11 +41,24 @@
   - [EC2 Pricing Models](#ec2-pricing-models)
   - [EC2 Instance Types](#ec2-instance-types)
     - [EBS](#ebs)
+  - [Create a web server](#create-a-web-server)
+  - [Load balancing](#load-balancing)
+- [AWS Command Line - LAB](#aws-command-line---lab)
+- [Roles](#roles)
+- [Database and RDS](#database-and-rds)
 - [Exam notes](#exam-notes)
   - [S3](#s3)
   - [CloudFront](#cloudfront-1)
   - [EC2](#ec2-1)
+  - [Roles](#roles-1)
+  - [Load balancers](#load-balancers)
+  - [DynamoDB](#dynamodb)
 
+# Info
+
+## Buckets
+
+* jeremythenbucket
 
 # Check
 
@@ -55,6 +70,8 @@
 * VPC (Virtual Private Cloud)
 * Route53 (Amazon's DNS service)
 * Content Delivery
+* OLTP vs OLAP
+* Data Warehousing
 
 # Notes
 
@@ -62,7 +79,10 @@
 * Use the regions near you.
 * Some regions may not have some services.
 * For the first AWS certification, make sure to have a deep understanding of VPC.
+* To get new user's credentials, click on the user, Security Credentials, make the current credential inactive and Create Access Key.
+* The private key is the key to open the public key.
 
+* You can add scripts to an instance when you are creating it, this way when it launches you can install things and etc. Called bootstrap scripts.
 
 # Services
 
@@ -369,17 +389,106 @@ Allows you to create storage volumes and attach them to Amazon EC2 instances. Is
   * ST1 (Throughput Optimized HDD)
   * SC1 (Cold HDD).
 
+## Create a web server
+
+1) Login to your EC2 instance
+2) Update yum (which is a package manager) with:
+> yum update -y
+3) Install apache server 'yum install httpd'
+4) go to /var/www/html
+
+## Load balancing
+
+There are 3 types of AWS load balancers:
+
+1) Application Load Balancer
+2) Network Load Balancer (ultra-high performance)
+3) Classic Load Balancer
+
+To create an Application Load Balancer
+
+4) Go to EC2
+5) Load Balancing, Load Balancer
+6) Application Load Balancer > Create
+
+When you create a new instance and want to register it to a load balancer, go to Load Balancing > Target Groups and add that instance to the load balancer you created previously.
+
+# AWS Command Line - LAB
+
+* To login in PuTTY, or command line
+
+> login as: ec2-user
+> ssh ec2-user@3.80.211.105 -i MyPrivateKey.pem
+
+* To confure aws from the console
+
+> aws configure
+
+* To create a s3 bucket. 'mb' stands for 'make bucket'
+
+> aws s3 mb s3://jeremythenbucket
+
+* See all bucket list
+
+> aws s3 ls
+
+* Upload a file to S3 from console. 'cp' stands for 'copy'
+
+> aws s3 cp hello.txt s3://jeremythenbucket/hello.txt
+
+* To see the .aws directory, to see config and credentials
+
+> cd ~
+> cd .aws
+> ls
+
+* To override the Access Key ID and Secret Access Key
+
+> aws configure
+> AWS Access Key ID: putwhateverwrong
+> AWS Secret Access Key: putwhateverwrong
+
+* Remove the .aws directory. This way your EC2 instance doesn't try to use the credentials in there and uses your role instead.
+
+> rm -rf .aws
+
+* Elevate your user
+
+> sudu su
 
 
+# Roles
 
+1) Go to IAM
+2) Roles
+3) Create Roles
+4) Select the service (like EC2)
+5) Filter and select the Amazon permision, like AmazonS3FullAccess
+6) Role name, description
+7) Create Role
+8) Go to EC2
+9) Select your instance
+10) Actions
+11) Instance Settings > Attach/Replace a AIM Role
+12) Apply
 
+# Database and RDS
 
+RDS (SQL/OLTP)
 
+* SQL
+* MySQL
+* PostgreSQL
+* Oracle
+* Autora
+* MariaDB
 
+DynamoDB (No SQL)
+Red Shift OLAP
 
+Redshift is Amazon's Data Warehouse solution. Used for Business Intelligence or Data Warehousing.
 
-
-
+ElasticCache caches the most common queries. To speed up performance of existing databases. It supports Memcached and Redis.
 
 
 
@@ -434,6 +543,28 @@ A group is a place to store your users and inherit all permissions specified in 
 * HTTPS (port 443)
 * HTTP (port 80)
 * Design for failure, have one EC2 instance in each availability zone
+
+## Roles
+
+* Roles are much more secure than using access key id's and secret access keys and are easier to use.
+* You can apply roles to EC2 instances at any time and the changes are visible immediately.
+* Roles are universal. You don't need to specify region, similar to users.
+
+## Load balancers
+
+There are 3 types of AWS load balancers:
+
+1) Application Load Balancer (make intelligent decisions)
+2) Network Load Balancer (ultra-high performance)
+3) Classic Load Balancer
+
+Have EC2 instances in different availability zones in case one failes.
+
+Use bootstrap scripts.
+
+## DynamoDB
+
+Amazon's NO/SQL database
 
 
 ---
