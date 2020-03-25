@@ -53,6 +53,16 @@ To run a specific method named 'textTax' on a specific test suit named 'app':
 > phpunit --testsuit=app --filter=testTax
 
 
+To run test with method 'testTotal' and use the value at index 1 in the Data provider
+
+> phpunit --filter=testTotal#1
+
+Or with a key:
+
+> phpunit --filter='testTotal@ints totaling 16'
+
+
+
 # Doubles
 
 ## Doubles uses
