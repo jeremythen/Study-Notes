@@ -43,6 +43,9 @@
     - [EBS](#ebs)
   - [Create a web server](#create-a-web-server)
   - [Load balancing](#load-balancing)
+  - [EC2 Bootstrap script](#ec2-bootstrap-script)
+  - [EC2 image](#ec2-image)
+  - [Create Auto Scaling Groups to make a fault tolerant web](#create-auto-scaling-groups-to-make-a-fault-tolerant-web)
 - [AWS Command Line - LAB](#aws-command-line---lab)
 - [Roles](#roles)
 - [Database and RDS](#database-and-rds)
@@ -413,6 +416,35 @@ To create an Application Load Balancer
 
 When you create a new instance and want to register it to a load balancer, go to Load Balancing > Target Groups and add that instance to the load balancer you created previously.
 
+## EC2 Bootstrap script
+
+While creating an EC2 instance, you can put a bootstrap script in Advanced Details like:
+
+```bash
+#!/bin/bash
+yum install httpd php php-mysql -y
+cd /var/www/html
+wget https://wordpress.org/wordpress-5.1.1.tar.gz
+tar -xzf wordpress-5.1.1.tar.gz
+cp -r wordpress/* /var/www/html/
+rm -rf wordpress
+rm -rf wordpress-5.1.1.tar.gz
+chmod -R 755 wp-content
+chown -R apache:apache wp-content
+service httpd start
+chkconfig httpd on
+```
+
+## EC2 image
+
+You an select an instance, Actions > Image > Create Image.
+This works like a snapshot of the same instance that can act as a node.
+
+## Create Auto Scaling Groups to make a fault tolerant web
+
+Don't forget to terminate it after working with it.
+
+
 # AWS Command Line - LAB
 
 * To login in PuTTY, or command line
@@ -489,6 +521,8 @@ Red Shift OLAP
 Redshift is Amazon's Data Warehouse solution. Used for Business Intelligence or Data Warehousing.
 
 ElasticCache caches the most common queries. To speed up performance of existing databases. It supports Memcached and Redis.
+
+
 
 
 
