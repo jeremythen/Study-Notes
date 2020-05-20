@@ -8,7 +8,7 @@
 * Proof of Concept
 * EAMS (Enterprise Architecture Management System)
 * TOGAF (The Open Group Architecture Framework)
-* ADN (Architecture Development Method)
+* ADM (Architecture Development Method)
 * Enterprise Continuum
 * Zachman Framework
 * Scaled Agile Framework (SAFe)
@@ -99,4 +99,6 @@ EA work at the strategic level. Working with executives about how to achieve com
 They look at the mission of the enterprise. Its why and how, based on budget and strategy.
 
 
+
+---
 
