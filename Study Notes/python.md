@@ -1,4 +1,12 @@
 
+
+# Important
+
+Check the doc for the built-in functions
+
+---
+
+
 Comment
 
 ```python
@@ -576,6 +584,27 @@ num_list = list((i, j) for i in range(10) for j in range(10) if i == j) # [(0, 0
 
 ```
 
+# Dict comprehension
+
+```python
+
+tempDict = {t: (t * 9/5 ) + 32 for t in temps if t < 100}
+
+dict1 = {"Jeremy": 20, "Juan": 21 }
+dict2 = {"Maria": 10, "Jack": 26 }
+
+newDict = {k: v for team in (dict1, dict2) for k,v in team.items()} # {'Jeremy': 20, 'Juan': 21, 'Maria': 10, 'Jack': 26}
+
+
+```
+
+# Sets comprehension
+
+The same as list comprehension but with {}
+
+letters = {letter for letter in 'human'}
+
+
 # OOP
 
 In a class, all methods needs to take the self argument, otherwise it will not work, since it's required.
@@ -789,6 +818,408 @@ type(data) # <class 'dict'>
 jsonString = json.dumps(data)
 
 type(jsonString) # <class 'str'>
+
+
+```
+
+
+--------------------------------------- LinkedIn Learning
+
+
+```python
+
+# Strings and bytes are not the same thing in python
+
+b = bytes([0x41, 0x42])
+
+
+bDecoded = b.decode('utf-8') # This turns the bytes into string.
+
+s = "String"
+
+stringToBytes = s.encode('utf-8') # This turns a string into bytes
+
+
+##################
+
+
+```
+
+# String format
+
+```python
+
+    "My name is {0} and I'm {1} years old".format("Jeremy", 26)
+
+```
+
+
+# Template String
+
+
+```python
+
+from string import Template
+
+template = Template("My name is ${name} and I'm ${age} years old")
+
+str = template.substitute(name="Jeremy", age=26) # or with a dictionary
+
+
+```
+
+
+# Built-in functions
+
+
+iter
+
+```python
+
+myIterator = iter([1,2,3,4])
+
+myNext = next(myIterator)
+
+
+# Or
+
+with open("myfile", 'e') as myFile:
+    for line in iter(myFile.readLine, ''): # '' is the sentinel value, the iter will stop when it reads it.
+        print(line)
+
+```
+
+enumerate
+
+```python
+
+for i,value in enumerate([10, 11, 12, 13, 14], start=1): # value will have the value of the list, and i will have the 'start' value.
+    print(i, m)
+
+
+```
+
+zip
+
+Is useful to combine multiple iteratable objects, returns a single iterable with a tuple on each record containing the records of all the iterables at that index.
+
+```python
+
+for m in zip([1,2,3,4,5], [5,4,3,2,1], [5,3,1,4,2]):
+    print(m) # (1,5,5), (2,4,3), (3,3,1)
+
+
+for 1,m in enumerate(zip([1,2,3,4,5], [5,4,3,2,1], [5,3,1,4,2]), start=1):
+    print(i, m) # (1,5,5), (2,4,3), (3,3,1)
+
+
+```
+
+filter
+
+
+```python
+
+filteredArray = list(filter(predicateFunction, array))
+
+data = [1,2,3,4,5]
+filteredTata = list(filter(lambda x: x % 2 == 0, data)) # [2, 4]
+
+
+chars = ['J', 'e', 'r', 'e', 'm', 'y']
+filteredTata = list(filter(lambda x: x.isupper(), chars)) # ['J']
+
+
+```
+
+map
+
+```python
+
+data = [1,2,3]
+filteredData = list(map(lambda x: x * x, data)) # [1, 4, 9]
+
+```
+
+sorted
+
+```python
+
+sortedData = sorted([4,2,5,7,1]) # Returns a new list, sorted.
+
+
+```
+
+# Itertools
+
+
+```python
+
+# cycle
+
+import itertools
+
+cycle1 = itertools.cicle([1,2,3])
+
+print(next(cycle1)) # 1
+print(next(cycle1)) # 2
+print(next(cycle1)) # 3
+print(next(cycle1)) # 1
+print(next(cycle1)) # 2
+
+# count
+
+count = itertools.count(startValue, stepValue)
+
+count = itertools.count(100, 10)
+
+print(next(count)) # 100
+print(next(count)) # 110
+print(next(count)) # 120
+
+
+# accumulate
+
+data = [10, 15, 20, 25, 30, 4, 10, 80, 3, 14]
+
+value = itertools.accumulate(data) # I defaults to sum, it will sum all of those values. Or pass a function to tell it when to stop and return that max:
+
+
+value = itertools.accumulate(data, max) # The built-in max function. This will return 30 and accumulate will sum the numbers until they reach that number and will return that.
+
+print(list(value)) # [10, 15, 20, 25, 30, 30, 30, 80, 80, 80]
+
+
+# chain
+
+data1 = ['1','2','3']
+data2 = ['a', 'b', 'c']
+
+data = itertools.chain(data1, data2)
+
+print(list(data)) # ['1','2','3', 'a', 'b', 'c']
+
+
+# dropwhile, this will drop values from a iterable until a condition is met.\
+
+
+data = [1,2,3,4,5,6]
+
+print(list(itertools.dropwhile(lambda x: x < 4, data))) # [4, 5, 6]. In this case, if < was >, then it would stop right away without dropping anything because the condition returns false staring.
+
+
+# takewhile, this will allow items that meet the condition
+
+print(list(itertools.takewhile(lambda x: x < 4, data))) # [1,2,3]. In this case, if < was >, then it would not take anything and return an empty [], since the condition returns false starting.
+
+```
+
+# Advanced Collections
+
+```python
+import collections
+
+# Named tuples
+
+named = collections.namedtuple("MyTuple", "a b c")
+myTuple = named(a = "myA", b = "myB", c = "myC")
+
+print(myTuple) # MyTuple(a='myA', b='myB', c='myC')
+
+print(myTuple.a) # myA
+
+
+# defaultdict. If you try to access a key that doesn't exist in this collection, it will create that key and assign and return a default value specified.
+
+
+my_dict = defaultdict(lambda: 10)
+
+key_list = ['a', 'b', 'c']
+
+for k in key_list:
+    my_dict[k]  # {'a': 10, 'b': 10, 'c': 10}
+    
+print(my_dict)
+
+
+# Counter
+
+from collections import Counter
+
+data1 = [1,2,3,4,5,3,4,2,4,5,5]
+data2 = [6,7,8,9,0,7,6,8,6,3,1,4,4,2,6,5,7]
+
+c1 = Counter(data1)
+c2 = Counter(data2)
+
+print(c1.values())
+
+print(c2[7])
+
+
+print(c1 & c2)
+print(c1 | c2)
+
+print(c1.most_common(3))
+
+c1.update(c2) # Add the two counters
+
+print(c1)
+print(c2)
+
+
+c1.subtract(c2)
+
+print(c1)
+
+
+
+# OrderedDict
+
+from collections import OrderedDict # OrderedDict keeps the order of the original structure
+
+data = [(1,2,3), (4,5,6)]
+my_dic = {'a': 1, 'b': 2, 'c': 3}
+
+my_order_dict = OrderedDict(data)
+
+my_order_dict_from_dict = OrderedDict(my_dic)
+
+
+my_order_dict.popitem(FALSE) # popitem receives a boolean indicating if it pops the last or first.
+
+
+# deque
+
+from collections import deque
+
+data = [1,2,3,4,5]
+
+my_deque = deque(data)
+
+
+print(my_deque)     # deque([1, 2, 3, 4, 5])
+
+my_deque.rotate(2)
+
+print(my_deque)     # deque([4, 5, 1, 2, 3])
+
+my_deque.rotate(-2)
+
+print(my_deque)     # deque([1, 2, 3, 4, 5])
+
+my_deque.pop()
+my_deque.popleft()
+
+my_deque.append(7)
+my_deque.appendleft(8)
+
+
+
+```
+
+
+# Enum
+
+```python
+
+from enum import Enum
+
+class MyEnum(Enum):
+    APPLE = 1
+    BANANA = 2
+    ORANGE = 3
+    TOMATO = 4
+
+```
+
+
+# __str__ and __repr__ functions
+
+If your class overrideds the __repr__ function, it will be called whenever the 'toString' method would be called, but if you also override the __str__ method,
+this will be called instead, and the __repr__ will only be called in the repr function like repr(object)
+
+
+```python
+
+class Person:
+    __repr__(self):
+        return "This is good for debugging purposes."
+    
+    __str__(self):
+        return "This is good for human readable."
+
+
+person = Person()
+
+print(repr(person)) #  "This is good for debugging purposes."
+
+print(str(person)) # "This is good for human readable."
+print(person) # "This is good for human readable."
+print("{0}".format(person)) # "This is good for human readable."
+
+```
+
+# __dir__ function
+
+When overriding the __dir__function, and calling dir(object), it will print the properties of the object.
+
+
+# Operator overloading
+
+There is operator overloading in Python.
+
+Just override one of the functions like:
+
+* __add__
+* __sub__
+* __mul__
+* __div__
+* __floordiv__ # //
+* __pow__
+* __and__ # &
+* __or__  # |
+
+Also, the same, but with short hand:
+
+
+* __iadd__ 
+* __isub__
+* __imul__
+* __itruediv__
+* __ifloordiv__ # //
+* __ipow__
+* __iand__ # &
+* __ior__  # |
+
+For comparison operators:
+
+* __gt__    # o1 > o2
+* __ge__    # o1 >= o2
+* __It__    # o1 < 02
+* __le__    # o1 <= 02
+* __eq__    # o1 == o2
+* __ne__    # o1 != 02
+
+
+# Loggin
+
+
+```python
+
+import logging
+
+logging.info("info")
+logging.error("info")
+logging.debug("info")
+logging.warning("info")
+logging.critical("info")
+
+
+###
+
+logging.basicConfig(level = logging.DEBUG, filename="output.log", filemode="w")
+
 
 
 ```
