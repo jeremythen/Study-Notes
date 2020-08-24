@@ -64,6 +64,7 @@ To set up a commit template
 
 > git config commit.template "path/to/the/.templatefile.txt"
 
+git config commit.template "C:/Users/gf75/Desktop/Projects/commitMessage.txt"
 
 ## Team Composition and member roles
 
