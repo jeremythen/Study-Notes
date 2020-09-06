@@ -99,3 +99,34 @@ shell
 And run with
 
 > ansible-playbook tasks.yml
+
+## Orchestration
+
+In a orchestrate.yml file:
+
+```yaml
+
+---
+  - name: "Orchestration Example"
+    hosts: logicservers
+    # serial: 1
+    strategy: free # Tries to work on as many servers as possible. Different than serial: 1, that works one by one
+    tasks:
+
+    - name: "Shutdown server"
+      debug:
+       msg: "Shutdown {{ inventory_hostname }}"
+
+    - name: "Upgrade Firmware"
+      debug:
+       msg: "Shutdown {{ inventory_hostname }}"
+
+    - name: "Start server"
+        debug:
+        msg: "Shutdown {{ inventory_hostname }}"
+
+```
+
+Run it like:
+
+> ansible-playbook orchestrate.yml -i my_hosts
