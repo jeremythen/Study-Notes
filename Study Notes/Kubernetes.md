@@ -8,52 +8,58 @@ You can use Kubernetes to run applications in Docker on your infrastructure.
 
 ## Terms
 
-* Pods (a group of containers, one single unit of deployment)
-* CNCF
-* etcd
-* kubectl (command line interface)
-* Work Node
-* Kubelet
-* Kube-proxy
+- Pods (a group of containers, one single unit of deployment)
+- CNCF
+- etcd
+- kubectl (command line interface)
+- Work Node
+- Kubelet
+  - Communicates with API server to see if pods have been assigned to nodes
+  - Executes pod containers via a container engine
+  - Mounts and runs pod volumes and secrets
+  - Executes health checks to identify pod/node status
+- Kube-proxy
+  - Process that runs on all worker nodes
 
 ## Features
 
-* Multi-Host Container Scheduling
-* Scalability and Availability
-* Flexibility and Modularization
-* Registration
-* Service Discovery
-* Persistent Storage
-* Application Upgrades and Downgrades
-* Maintenance
-* Logging and Monitoring
-* Secrets Management
-* Cummunity
-  * KubeCon
-  * Meetups
-  * Slack - https://kubernetes.slack.com
+- Multi-Host Container Scheduling
+- Scalability and Availability
+- Flexibility and Modularization
+- Registration
+- Service Discovery
+- Persistent Storage
+- Application Upgrades and Downgrades
+- Maintenance
+- Logging and Monitoring
+- Secrets Management
+- Cummunity
+  - KubeCon
+  - Meetups
+  - Slack - https://kubernetes.slack.com
 
 # Notes
 
-* Don't create your own orchestrator.
+- Don't create your own orchestrator.
 
 # Kubernetes Architecture
 
 ## Master Node
 
-* The API Server
-  * The frontend of the kubernetes
-* Scheduler
-  * Watches, creates pods
-* Controller Manager
-  * Node controller, orchestration, replication controller, endpoint controller, service account, etc.
+- The API Server
+  - The frontend of the kubernetes
+- Scheduler
+  - Watches, creates pods
+- Controller Manager
+  - Node controller, orchestration, replication controller, endpoint controller, service account, etc.
 
 # Controllers
 
 ## Types
 
-* ReplicaSet
-  * Makes sure a specified number of replicas for pods are running at all times.
-* Deployment
-  * Declartive updates or ReplicaSets and Pods
-* 
+- ReplicaSet
+  - Makes sure a specified number of replicas for pods are running at all times.
+- Deployment
+  - Declartive updates or ReplicaSets and Pods
+
+##
