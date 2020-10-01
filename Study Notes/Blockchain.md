@@ -77,3 +77,10 @@ One transaction at a time.
 - blockchainhub.net
 - governmentblockchain.org
 -
+
+# Ethereum
+
+## Terms
+
+- Dapps (Decentralized apps)
+-
