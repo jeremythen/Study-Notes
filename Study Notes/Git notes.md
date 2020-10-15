@@ -139,6 +139,7 @@ git hooks are used to check pre commit/push/etc events.
 
 ---
 
+Tell git to save the user and password next time they are requested and provided:
 
-
+> git config --global credential.helper store
 
