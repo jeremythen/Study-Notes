@@ -56,6 +56,10 @@
   - [Roles](#roles-1)
   - [Load balancers](#load-balancers)
   - [DynamoDB](#dynamodb)
+  - [Security](#security)
+    - [Terms](#terms-1)
+    - [Notes](#notes-1)
+  - [AWS CLI](#aws-cli)
 
 # Info
 
@@ -602,3 +606,31 @@ Amazon's NO/SQL database
 
 
 ---
+
+## Security
+
+* IAM (Identity Access Management)
+* CloudTrail (API logging capability, tracks user activity and API usage. Logging activities like who, where, when, a user accessed or manipulated a resource)
+
+### Terms
+
+* Separation of duties
+* MFA (Multi Factor Authentication)
+* NACL (Network Access Control Lists)
+
+### Notes
+
+* Always use Multi Factor Authentication in AWS
+* Don't use the root account unless is completely necessary.
+
+
+
+## AWS CLI
+
+> aws --version
+
+> aws configure
+
+Open config file:
+> notepad .aws\config
+
